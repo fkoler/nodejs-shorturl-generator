@@ -11,6 +11,10 @@
             background-color: #212529;
             color: whitesmoke;
         }
+
+        h1 {
+            text-align: center;
+        }
     </style>
     <title>URL Shortener</title>
 </head>
@@ -37,7 +41,6 @@
 
                     <th>Input URL</th>
                     <th>Short URL</th>
-                    <th>Clicks</th>
                 </tr>
             </thead>
 
@@ -56,9 +59,6 @@
                             <a class="link-underline link-underline-opacity-0" href="<%= shortUrl.short %>">
                                 <%= shortUrl.short %>
                             </a>
-                        </td>
-                        <td>
-                            <%= shortUrl.clicks %>
                         </td>
                     </tr>
                     <% }); %>

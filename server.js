@@ -2,7 +2,7 @@ const http = require('http');
 const express = require('express');
 const mongoose = require('mongoose');
 
-const ShortUrl = require('./models/shUrl');
+const ShortUrl = require('./models/shortUrl');
 
 const app = express();
 const server = http.createServer(app);
@@ -32,13 +32,9 @@ app.post('/shortUrls', async (req, res) => {
 
 app.get('/:shortUrl', async (req, res) => {
     try {
-        const shortUrl = await ShortUrl.findOne({ input: req.params.shortUrl });
+        const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl });
 
         if (!shortUrl) return res.sendStatus(404);
-
-        shortUrl.clicks++;
-
-        await shortUrl.save();
 
         res.redirect(shortUrl.full);
     } catch (error) {
